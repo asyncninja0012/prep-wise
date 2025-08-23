@@ -116,6 +116,9 @@ const Agent = ({userName, userId, type, interviewId, questions}: AgentProps) => 
     const handleCall = async () => {
         setCallStatus(CallStatus.CONNECTING);
 
+        console.log("Workflow ID (prod check):", process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID);
+
+
         if(type==='generate'){
             await vapi.start(undefined, undefined, undefined,
                 process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
