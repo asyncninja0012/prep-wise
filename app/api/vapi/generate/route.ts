@@ -36,7 +36,7 @@ export async function POST(request: Request) {
             userId: userid,
             createdAt: new Date().toISOString(),
             finalized: true,
-            coverImag: getRandomInterviewCover(),
+            coverImage: getRandomInterviewCover(),
 
         }
 
