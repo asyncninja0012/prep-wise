@@ -13,7 +13,7 @@ const page = async({params}: RouteParams) => {
   const user = await getCurrentUser();
 
   if(!interview){
-    redirect('/');
+    redirect('/dashboard');
   }
 
   return (

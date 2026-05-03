@@ -75,18 +75,22 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
                 return;
             }
 
-            await signIn({
+            const result = await signIn({
                 email,
                 idToken
             });
 
+            if (!result?.success) {
+                toast.error(result?.message || "Server sign-in failed. Please check server logs.");
+                return;
+            }
             
             toast.success("Logged in successfully");
-            router.push('/');
+            router.push('/dashboard');
         }
-    }catch(error){
-        console.log(error);
-        toast.error(`There was an error: ${error}`);
+    } catch(error: any) {
+        console.error(error);
+        toast.error(error.message || "An unexpected error occurred.");
     }
   }
 
